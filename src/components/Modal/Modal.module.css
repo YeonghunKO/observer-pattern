@@ -1,0 +1,37 @@
+@keyframes move-up {
+  0% {
+    transform: translateY(100px);
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes move-down {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(100px);
+    opacity: 1;
+  }
+}
+
+.modal {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  width: 20vw;
+  height: 10vh;
+  background-color: #5c5757;
+  text-align: center;
+}
+
+.move-up {
+  animation: move-up 500ms ease-in-out;
+}
+
+.move-down {
+  animation: move-down 500ms ease-in-out forwards;
+}
