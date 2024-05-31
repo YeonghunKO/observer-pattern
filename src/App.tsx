@@ -2,13 +2,18 @@ import { useState } from "react";
 import { createPortal } from "react-dom";
 import { Modal } from "./components/Modal";
 import { showToast } from "./utils/showToast";
-import Nested from "./components/Nested";
 
 function App() {
   const [open, setOpen] = useState(false);
+  const [initOpen, setInitOpen] = useState(true);
 
   const handleClick = () => {
     setOpen(true);
+
+    if (initOpen) {
+      setInitOpen(false);
+    }
+
     showToast("토스트 내놔 🥪");
   };
 
@@ -21,9 +26,8 @@ function App() {
       <button onClick={handleClick} type="button">
         클릭해보렴
       </button>
-      <Nested />
       {createPortal(
-        <Modal onClose={handleModalClose} open={open} />,
+        <Modal onClose={handleModalClose} open={open} initOpen={initOpen} />,
         document.getElementById("portal") as HTMLDivElement
       )}
     </>
