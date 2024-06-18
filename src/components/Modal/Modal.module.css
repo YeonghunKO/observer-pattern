@@ -1,26 +1,26 @@
 @keyframes move-up {
   0% {
-    transform: translateY(0px);
+    transform: translateY(110px);
   }
   100% {
-    transform: translateY(-100px);
+    transform: translateY(0px);
     opacity: 1;
   }
 }
 
 @keyframes move-down {
   0% {
-    transform: translateY(-100px);
+    transform: translateY(0px);
   }
   100% {
-    transform: translateY(0px);
+    transform: translateY(110px);
     opacity: 1;
   }
 }
 
 .modal {
   position: absolute;
-  bottom: -100px;
+  bottom: 10px;
   left: 20px;
   width: 20vw;
   height: 10vh;
@@ -34,6 +34,6 @@
 }
 
 .move-down {
-  animation: move-down 500ms ease-in-out;
+  animation: move-down 500ms ease-in-out forwards;
   display: block;
 }
