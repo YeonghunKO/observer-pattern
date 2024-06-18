@@ -1,33 +1,31 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { createPortal } from "react-dom";
 import { Modal } from "./components/Modal";
 import { showToast } from "./utils/showToast";
+import { useToast } from "./hooks/useToast";
 
 function App() {
-  const [open, setOpen] = useState(false);
-  const [initOpen, setInitOpen] = useState(true);
+  const [message, setMessage] = useState("");
+
+  const toasts = useToast();
 
   const handleClick = () => {
-    setOpen(true);
-
-    if (initOpen) {
-      setInitOpen(false);
-    }
-
-    showToast("토스트 내놔 🥪");
+    showToast(message);
   };
 
-  const handleModalClose = () => {
-    setOpen(false);
+  const onChnage = (e: ChangeEvent<HTMLInputElement>) => {
+    setMessage(e.target.value);
   };
 
   return (
     <>
+      <input onChange={onChnage} />
       <button onClick={handleClick} type="button">
         클릭해보렴
       </button>
+
       {createPortal(
-        <Modal onClose={handleModalClose} open={open} initOpen={initOpen} />,
+        toasts.map((toast) => <Modal key={toast.id} message={toast.value} />),
         document.getElementById("portal") as HTMLDivElement
       )}
     </>
