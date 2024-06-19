@@ -4,6 +4,21 @@ import { Modal } from "./components/Modal";
 import { showToast } from "./utils/showToast";
 import { useToast } from "./hooks/useToast";
 
+const Nested = () => {
+  return (
+    <div>
+      <p>하하</p>
+      <button
+        onClick={() => {
+          showToast("何でもいいです。");
+        }}
+      >
+        何でもいいです。
+      </button>
+    </div>
+  );
+};
+
 function App() {
   const [message, setMessage] = useState("");
 
@@ -23,7 +38,7 @@ function App() {
       <button onClick={handleClick} type="button">
         클릭해보렴
       </button>
-
+      <Nested />
       {createPortal(
         toasts.map((toast) => <Modal key={toast.id} message={toast.value} />),
         document.getElementById("portal") as HTMLDivElement
