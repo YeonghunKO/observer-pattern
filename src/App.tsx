@@ -34,7 +34,7 @@ function App() {
 
   return (
     <>
-      <input onChange={onChnage} />
+      <input style={{ margin: "10px" }} onChange={onChnage} />
       <button onClick={handleClick} type="button">
         클릭해보렴
       </button>
