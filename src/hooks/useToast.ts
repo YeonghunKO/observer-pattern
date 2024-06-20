@@ -10,13 +10,16 @@ export const useToast = () => {
   const [toast, setToast] = useState<TToast[]>([]);
 
   useEffect(() => {
+    let id: number;
     const handleToast = (message: string) => {
       const toastObj = { value: message, id: Date.now() };
       setToast((prev) => [...prev, toastObj]);
 
-      setTimeout(() => {
+      clearTimeout(id);
+      id = setTimeout(() => {
         setToast([]);
-      }, 2000);
+        console.log(toastObj);
+      }, 5000);
     };
 
     toastSubject.subscribe(handleToast);
