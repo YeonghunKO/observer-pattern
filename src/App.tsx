@@ -7,7 +7,6 @@ import { useToast } from "./hooks/useToast";
 const Nested = () => {
   return (
     <div>
-      <p>하하</p>
       <button
         onClick={() => {
           showToast("何でもいいです。");
@@ -36,7 +35,7 @@ function App() {
     <>
       <input style={{ margin: "10px" }} onChange={onChnage} />
       <button onClick={handleClick} type="button">
-        클릭해보렴
+        클릭!!
       </button>
       <Nested />
       {createPortal(
